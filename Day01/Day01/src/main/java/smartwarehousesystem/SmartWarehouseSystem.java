@@ -19,7 +19,7 @@ public class SmartWarehouseSystem {
 
 
         // display items
-        Storage.displayItems(electricStorage);
+        Storage.displayItems(electricStorage.getItems());
         Storage.displayItems(groceriesStorage.getItems());
         Storage.displayItems(furnitureStorage.getItems());
 
