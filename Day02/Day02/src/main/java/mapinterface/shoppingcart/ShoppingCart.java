@@ -1,6 +1,5 @@
 package mapinterface.shoppingcart;
 
-
 import java.util.*;
 class ShoppingCart {
     private Map<String, Double> productPrices = new HashMap<>();
