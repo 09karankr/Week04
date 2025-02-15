@@ -1,0 +1,26 @@
+package validatehexcolor;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ValidateHexColor {
+    public static void main(String[] args) {
+        String regex = "^#[a-zA-Z]{2}[a-zA-z0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        String input = "#FFA500 #ff4500 #123";
+        String[] hexCode = input.split("\\s+");
+
+        boolean found = false;
+
+        for(String code: hexCode){
+            Matcher matcher = pattern.matcher(code);
+            if (matcher.matches()){
+                System.out.println("Valid :" + code);
+                found = true;
+            }
+        }
+        if (!found){
+            System.out.println("Invalid");
+        }
+    }
+}
