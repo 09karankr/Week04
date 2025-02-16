@@ -4,29 +4,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RepeatingWords {
-    public static List<String> RepeatedWords(String sentence){
+    public static List<String> getWords(String text){
+        String regex = "\\b(\\w+)\\s+\\1\\b";
+        Pattern pattern  = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
         List<String> list = new ArrayList<>();
-        String[] arrWords = sentence.split("\\s+");
-        Map<String,Integer> wordCount = new HashMap<>();
+        while(matcher.find()){
+            list.add(matcher.group(1));
 
-
-        for (String word : arrWords){
-            wordCount.put(word, wordCount.getOrDefault(word,0)+1);
         }
-
-        for (Map.Entry<String,Integer> entry : wordCount.entrySet()){
-            if(entry.getValue() > 1){
-                list.add(entry.getKey());
-            }
-        }return list;
+        return list;
     }
-
     public static void main(String[] args) {
-        String sentence = "This is is a repeated repeated word test.";
 
-        List<String> result = RepeatedWords(sentence);
-        System.out.println(result);
+        String text = "This is is a repeated repeated word test.";
+        List<String> list = getWords(text);
+        System.out.println("List of repeated words :"+list);
     }
 }
